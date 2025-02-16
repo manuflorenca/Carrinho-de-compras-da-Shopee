@@ -1,36 +1,28 @@
-// Quais ações o meu carrinho pode fazer?
-
-// Casos de uso:
-
-// ✅ -> Adicionar item
-
-async function addItem(userCart){
+// Adicionar item ao carrinho
+function addItem(userCart, item) {
     userCart.push(item);
 }
 
-// -> Calcular o total
-
-async function calculateTotal(userCart) {
-    const result = userCart.reduce((total,item) => total + item.subtotal(), 0);
-    console.log(result);
+// Calcular o total do carrinho
+function calculateTotal(userCart) {
+    const result = userCart.reduce((total, item) => total + item.subtotal(), 0);
+    console.log(`Total do carrinho: ${result}`);
 }
 
-// -> Deletar item - diminui um item
+// Deletar um item (diminuir quantidade)
+function deleteItem(userCart, name) {
+    const index = userCart.findIndex((item) => item.name === name);
 
-async function deleteItem(userCart,name) {
-    
+    if(index !== -1){
+        userCart.splice(index,1);
+    }
 }
 
-// -> Remover um item
-
-async function removeItem(userCart, index) {
-    
+// Remover um item completamente
+function removeItem(userCart, index) {
+    if (index >= 0) {
+        userCart.splice(index, 1);
+    }
 }
 
-
-export {
-    addItem,
-    calculateTotal,
-    deleteItem,
-    removeItem,
-}
+export { addItem, calculateTotal, deleteItem, removeItem };
