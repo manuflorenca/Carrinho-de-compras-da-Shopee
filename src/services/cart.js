@@ -21,8 +21,10 @@ function deleteItem(userCart, name) {
 
 // Remover um item completamente
 function removeItem(userCart, index) {
-    if (index >= 0) {
-        userCart.splice(index, 1);
+    const deleteIndex = index -1;
+
+    if (index >= 0 && index < userCart.length) {
+        userCart.splice(deleteIndex, 1);
     }
 }
 
