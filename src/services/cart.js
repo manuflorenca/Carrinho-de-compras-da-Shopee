@@ -5,8 +5,9 @@ function addItem(userCart, item) {
 
 // Calcular o total do carrinho
 function calculateTotal(userCart) {
+    console.log("\nShopee Cart TOTAL IS: ");
     const result = userCart.reduce((total, item) => total + item.subtotal(), 0);
-    console.log(`Total do carrinho: ${result}`);
+    console.log(`\n 🎁 Total do carrinho: ${result}`);
 }
 
 // Deletar um item (diminuir quantidade)
@@ -25,4 +26,12 @@ function removeItem(userCart, index) {
     }
 }
 
-export { addItem, calculateTotal, deleteItem, removeItem };
+
+async function displayCart(userCart){
+    console.log("\nShopee cart list:")
+    userCart.forEach((item,index) =>{
+        console.log(`${index +1}. ${item.name} - R$ ${item.price} | ${item.quantity}x | Subtotal = ${item.subtotal()}`)
+    })
+};
+
+export { addItem, calculateTotal, deleteItem, removeItem, displayCart };
